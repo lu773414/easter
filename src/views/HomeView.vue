@@ -1,17 +1,14 @@
 <template>
   <div class="page1">
 
-    <p v-if="isStart" class="aniText">你來到空墳墓面前<br/>你覺得你是…？</p>
+    <p class="aniText">你還記得那個故事嗎？<br>
+    就是那個已經釘死在十字架上的君王，<br>
+    卻從死裡復活的傳奇故事.......</p>
+    <div>
+      <button class="aniText" @click="chooseRole('story')">Start</button>
+    </div>
+    
 
-    <h2 v-else>welcome</h2>
-
-
-    <button v-if="isStart" class="aniText" @click="chooseRole('soldier')">看守墳墓的羅馬士兵</button><br/>
-    <button v-if="isStart" class="aniText" @click="chooseRole('maria')">抹大拉的馬利亞</button><br/>
-    <button v-if="isStart" class="aniText" @click="chooseRole('disciple')">西門彼得與門徒們</button><br/>
-    <button v-if="isStart" class="aniText" @click="chooseRole('angle')">天使</button>
-
-    <button v-else @click="getStart">開始體驗</button>
   </div>
 </template>
 
@@ -42,8 +39,12 @@ const chooseRole = (role) => {
   height: 100vh;
   background: no-repeat center  url("../public/空墳墓_暗.png");
   background-size: cover;
-  padding: 60% 0;
+  padding: 50% 1.5rem;
   color:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 25px;
 }
 
 .page2 {
@@ -51,8 +52,9 @@ const chooseRole = (role) => {
 }
 
 .aniText {
-  font-size: 25px;
-  line-height: 50px;
+  text-align:left;
+  font-size: 24px;
+  line-height: 40px;
   opacity: 0;
   color: white;
   animation: opacity 2s ease ;
@@ -66,45 +68,46 @@ const chooseRole = (role) => {
 }
 
 button {
+  transition: all 0.1s ease;
   border-radius: 20%;
-  font-size: 45px;
-  /* line-height: 40px; */
   background-color: rgb(192,192,192,0.5);
   color: white;
-  margin-bottom: 1rem;
-  margin: 10px;
+  margin: 10px auto;
   padding: 0 20px;
   text-align: center;
   text-decoration: none;
   border-radius: 30px;
   border: 2px solid #fff;
   cursor: pointer;
+  /* box-shadow: 0 5px rgb(105,105,105,0.6); */
+}
+
+button:hover {
+  background-color: rgb(192,192,192,0.8);
+  /* color: black; */
+}
+
+button:active {
+
+  box-shadow: 0 5px #666666bc;
+  transform: translateY(4px);
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+ 
+}
+
+@media (max-width: 575px) {
+  .aniText {
+    font-size: 22px;
+    line-height: 30px;
   }
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+@media (max-width: 400px) {
+  .aniText {
+    font-size: 20px;
+    line-height: 30px;
   }
 }
 </style>
